@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student index{% endblock %}
+
+{% block body %}
+    <h1>Student index</h1>
+         <a href="{{ path('app_login') }}" class="btn btn-outline-info" >login</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Adress</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td>{{ student.id }}</td>
+                <td>{{ student.fn }}</td>
+                <td>{{ student.ls }}</td>
+                <td>{{ student.db ? student.db|date('Y-m-d') : '' }}</td>
+                <td>{{ student.gender }}</td>
+                <td>{{ student.phone }}</td>
+                <td>{{ student.adress }}</td>
+                <td>
+                     <a href="{{ path('student_show', {'id': student.id}) }}" class="btn btn-outline-info" >show</a>
+                    {# <a href="{{ path('student_edit', {'id': student.id}) }}" class="btn btn-outline-warning">edit</a> #}
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {# <a href="{{ path('student_new') }}" class="btn btn-success">Create new</a> #}
+
+{% endblock %}

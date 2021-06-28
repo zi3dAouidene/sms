@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Student{% endblock %}
+
+{% block body %}
+    <h1>Student</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ student.id }}</td>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <td>{{ student.fn }}</td>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <td>{{ student.ls }}</td>
+            </tr>
+            <tr>
+                <th>Date Of Birth</th>
+                <td>{{ student.db ? student.db|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <td>{{ student.gender }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ student.phone }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ student.adress }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('student_index') }}" class="btn btn-outline-dark" >back to list</a>
+
+    {# <a href="{{ path('student_edit', {'id': student.id}) }}" class="btn btn-outline-warning" >edit</a> #}
+
+    {{ include('student/_delete_form.html.twig') }}
+{% endblock %}
